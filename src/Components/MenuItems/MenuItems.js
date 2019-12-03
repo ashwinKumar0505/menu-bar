@@ -22,8 +22,8 @@ class MenuItems extends React.Component {
     const newItems = this.state.itemsToShow.items.find(
       item => item.value === value,
     );
-    console.log(newItems);
-    if ("items" in newItems) {
+
+    if ( newItems !== undefined && "items" in newItems) {
       this.setState(prevState => {
         return {
           itemsToShow: newItems,
@@ -40,12 +40,15 @@ class MenuItems extends React.Component {
   moveToPrevious = () => {
     const newItemsStack = this.state.itemsStack;
     const newItemsToShow = newItemsStack.pop();
-    this.setState({
-      itemsToShow: newItemsToShow,
-      itemsStack: newItemsStack,
-      id: newItemsToShow.id,
-      move: "prev",
-    });
+
+    if(newItemsToShow !== undefined) {
+      this.setState({
+        itemsToShow: newItemsToShow,
+        itemsStack: newItemsStack,
+        id: newItemsToShow.id,
+        move: "prev",
+      });
+    }
   };
 
   state = {
@@ -57,17 +60,16 @@ class MenuItems extends React.Component {
   };
 
   render() {
-    // console.log(this.state.move === "next" ? "slideIn" : "slideOut");
     const childFactoryCreator = classNames => child =>
       React.cloneElement(child, { classNames });
     return (
       <TransitionGroup
         childFactory={childFactoryCreator(
-          this.state.move === "next" ? "slideIn" : "slideOut",
+          this.state.move === "next" ? this.props.animation[0] : this.props.animation[1],
         )}
       >
         <CSSTransition
-          timeout={400}
+          timeout={300}
           in={true}
           appear={true}
           classNames="slideOut"
@@ -83,6 +85,7 @@ class MenuItems extends React.Component {
             onClick={event => {
               event.stopPropagation();
             }}
+            style={{backgroundColor:this.props.color}}
           >
             {this.state.itemsToShow.items.map(item => {
               if (item.value === "back") {

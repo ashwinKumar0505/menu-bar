@@ -4,8 +4,6 @@ import "./App.css";
 import Demo1 from "./Components/Demo1/Demo1";
 import Demo2 from "./Components/Demo2/Demo2";
 import Demo3 from "./Components/Demo3/Demo3";
-import Demo4 from "./Components/Demo4/Demo4";
-import Demo5 from "./Components/Demo5/Demo5";
 
 class App extends React.Component {
   state = {

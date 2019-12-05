@@ -5,12 +5,12 @@ import classes from "./Demo3.module.css";
 
 const Demo3 = props => {
   return (
-      <div className={classes.Demo3}>
+    <div className={classes.Demo3}>
       <div className={classes.Description}>
-      <p>
-        Here the submenu will fade in and scale up from the back and the current
-        level will fade out and move down. Open Menu
-      </p>
+        <p>
+          Here the submenu will fade in and scale up from the back and the
+          current level will fade out and move down.
+        </p>
       </div>
       <div className={classes.menu}>
         <BurgerMenu

@@ -7,10 +7,11 @@ const Demo2 = props => {
   return (
     <div className={classes.Demo2}>
       <div className={classes.Description}>
-      <p>
-        Here the submenu will fade in and scale up from the back and the current
-        level will fade out and move down. Open Menu
-      </p>
+        <p>
+          The submenu of this menu will slide to the side and fade out. Going a
+          level deeper will slide the submenu from the right; going back will
+          slide from the left.
+        </p>
       </div>
       <div className={classes.menu}>
         <BurgerMenu

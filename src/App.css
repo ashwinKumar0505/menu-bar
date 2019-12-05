@@ -10,12 +10,13 @@
   background-color: #fcf9f2;
   color: #888785;
   width: 100%;
-  padding: 50px;
+  padding: 50px 0;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
+
 
 .Header h1,
 .Header p {
@@ -26,9 +27,10 @@
 
 .DemoButtons {
   display: flex;
-  width: 50%;
+  width: 30%;
   justify-content: space-between;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .DemoButtons a {
@@ -44,7 +46,11 @@
   font-size: 15px;
   text-decoration: none;
 }
-
+.Demos{
+  width: 90%;
+  margin:50px;
+  padding:0 50px;
+}
 
 
 .DemoButtons a:active,
@@ -54,66 +60,66 @@
   color: #89867e;
 }
 
-.Anim1-enter {
+.fadeIn-enter {
   animation-name: fadeIn;
   animation-duration: 400ms;
   z-index: 100;
 }
 
-.Anim1-exit {
+.fadeIn-exit {
   animation-name: showOut;
   animation-duration: 400ms;
   z-index: 50;
 }
 
 
-.Anim2-enter {
+.fadeOut-enter {
   animation-name: showIn;
   animation-duration: 400ms;
 }
 
-.Anim2-exit {
+.fadeOut-exit {
   animation-name: fadeOut;
   animation-duration: 500ms;
 }
 
-.Anim3-enter {
+.slideIn-enter {
   animation-name: fadeInRight;
   animation-duration: 400ms;
 }
 
-.Anim3-exit {
+.slideIn-exit {
   animation-name: fadeOutLeft;
   animation-duration: 500ms;
 }
 
-.Anim4-enter {
+.slideOut-enter {
   animation-name: fadeInLeft;
   animation-duration: 400ms;
 }
 
-.Anim4-exit {
+.slideOut-exit {
   animation-name: fadeOutRight;
   animation-duration: 500ms;
 }
 
-.Anim5-enter {
+.scaleUp-enter {
   animation-name: showFromBack;
   animation-duration: 400ms;
 }
 
-.Anim5-exit {
+.scaleUp-exit {
   animation-name: hideToFront;
   animation-duration: 500ms;
 }
 
-.Anim6-enter {
+.scaleDown-enter {
   animation-name: showFromFront;
   animation-duration: 400ms;
   z-index: 100;
 }
 
-.Anim6-exit {
+.scaleDown-exit {
   animation-name: hideToBack;
   animation-duration: 500ms;
 }
@@ -316,8 +322,20 @@
   .App {
     align-items: flex-start;
   }
+  .Header{
+    padding:0
+  }
 
   .menu {
     margin-left: 50px;
   }
+  .DemoButtons{
+    width: 100%;
+  }
+  .Demos{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }

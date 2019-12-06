@@ -1,16 +1,16 @@
-.AllDemo{
-  height: 76vh;
+.AllDemo {
+  height: 80vh;
 
 }
 
-
-
-.Demo2 {
+.Demo5 {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
+  margin-top: 100px;
 }
+
 
 .Heading {
   text-align: center;
@@ -42,20 +42,20 @@
   position: relative;
   width: 50%;
   min-height: 300px;
-
   padding: 0 40px;
 
 }
 
 @media(max-width:750px) {
-  .Demo2 {
+  .Demo5 {
     flex-direction: column;
     margin:0;
   }
 
-   .Heading{
+  .Heading {
     margin: 0;
   }
+
   .Description {
     border: none;
     width: 90%;
@@ -64,19 +64,20 @@
     min-height: 0;
   }
 
-  .Description p{
+
+  .Description p {
     text-align: center;
-    padding:0;
+    padding-top: 0;
   }
-  .menu{
+
+  .menu {
     padding: 0;
     width: 70%;
   }
 }
 
-
-@media(max-height:700px){
-  .AllDemo{
+@media(max-height:700px) {
+  .AllDemo {
     height: 100%;
   }
 }

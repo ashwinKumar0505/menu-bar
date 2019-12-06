@@ -1,9 +1,9 @@
 import React from "react";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import MenuItems from "../MenuItems/MenuItems";
-import classes from "./Demo1.module.css";
+import classes from "./Demo4.module.css";
 
-class Demo1 extends React.Component {
+class Demo4 extends React.Component {
     state = {
     showMenuItems: false,
   };
@@ -24,8 +24,8 @@ class Demo1 extends React.Component {
   render() {
     return (
       <div onClick={this.closeItemsHandler} className={classes.AllDemo}>
-        <h2 className={classes.Heading}>FADE IN-OUT</h2>
-        <div className={classes.Demo1}>
+        <h2 className={classes.Heading}>SCALE UP-DOWN</h2>
+        <div className={classes.Demo4}>
           <div className={classes.Description}>
             <p>
               Here the submenu will fade in and scale up from the back and the
@@ -41,7 +41,7 @@ class Demo1 extends React.Component {
             <MenuItems
               showMenuItems={this.state.showMenuItems}
               color={this.props.color}
-              animation={["fadeIn", "fadeOut"]}
+              animation={["scaleUp", "scaleDown"]}
             />
           </div>
         </div>
@@ -49,4 +49,4 @@ class Demo1 extends React.Component {
     );
   }
 }
-export default Demo1;
+export default Demo4;

@@ -1,98 +1,135 @@
 import React from "react";
-import { NavLink, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Demo1 from "./Components/Demo1/Demo1";
 import Demo2 from "./Components/Demo2/Demo2";
 import Demo3 from "./Components/Demo3/Demo3";
+import Demo4 from "./Components/Demo4/Demo4";
+import Demo5 from "./Components/Demo5/Demo5";
+import { Link, animateScroll as scroll } from "react-scroll";
+import image from "./bar2.png";
+import SideDrawer from "./Components/SideDrawer/SideDrawer";
+import BackDrop from "./Components/BackDrop/BackDrop";
 
 class App extends React.Component {
   state = {
-    showMenuItems: false,
+    showSideDrawer: false,
   };
-  showItemsHandler = () => {
-    this.setState(prevState => {
-      return {
-        showMenuItems: !prevState.showMenuItems,
-      };
+
+  sideDrawerHandler = event => {
+    event.stopPropagation();
+    let changedState = !this.state.showSideDrawer;
+    this.setState({
+      showSideDrawer: changedState,
     });
   };
-  closeItemsHandler = () => {
-    if (this.state.showMenuItems) {
-      this.setState({
-        showMenuItems: false,
-      });
-    }
+
+  closeSideDrawer = () => {
+    console.log("here");
+    this.setState({
+      showSideDrawer: false,
+    });
   };
+  scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
   render() {
     return (
-      <div className="App" onClick={() => this.closeItemsHandler()}>
-        <div className="Header">
-          <h1>Responsive Multi-Level Menu</h1>
-          <p>Space-saving drop-down menu with subtle effects</p>
+      <div className="App">
+        <div className="NavBar">
+          <img src={image} alt="bar" onClick={this.scrollToTop} />
           <div className="DemoButtons">
-            <NavLink to="/Demo1" exact activeClassName="active">
-              Demo1
-            </NavLink>
-            <NavLink to="/Demo2" exact activeClassName="active">
-              Demo2
-            </NavLink>
-            <NavLink to="/Demo3" exact activeClassName="active">
-              Demo3
-            </NavLink>
-            {/* <NavLink to="/Demo4" exact activeClassName="active">
-              Demo4
-            </NavLink>
-            <NavLink to="/Demo5" exact activeClassName="active">
-              Demo5
-            </NavLink> */}
+            <Link
+              activeClass="active"
+              to="Demo1"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              FADE IN-OUT
+            </Link>
+            <Link
+              activeClass="active"
+              to="Demo2"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              SLIDE IN-OUT
+            </Link>
+            <Link
+              activeClass="active"
+              to="Demo3"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              MOVE UP-DOWN
+            </Link>
+            <Link
+              activeClass="active"
+              to="Demo4"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              SCALE UP-DOWN
+            </Link>
+            <Link
+              activeClass="active"
+              to="Demo5"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
+              SCALE DOWN-UP
+            </Link>
           </div>
         </div>
-        <div className="Demos">
-          <Switch>
-            <Route
-              path="/Demo1"
-              render={() => (
-                <Demo1
-                  showItemsHandler={this.showItemsHandler}
-                  showMenuItems={this.state.showMenuItems}
-                  color="#9f3147"
-                />
-              )}
-            ></Route>
-            <Route
-              path="/Demo2"
-              render={() => (
-                <Demo2
-                  showItemsHandler={this.showItemsHandler}
-                  showMenuItems={this.state.showMenuItems}
-                  color="#d35420"
-                />
-              )}
-            ></Route>
-            <Route
-              path="/Demo3"
-              render={() => (
-                <Demo3
-                  showItemsHandler={this.showItemsHandler}
-                  showMenuItems={this.state.showMenuItems}
-                  color="#44b5af"
-                />
-              )}
-            >
+        <div className="TopNav">
+          <img src={image} alt="bar" onClick={this.scrollToTop}/>
+          <div className="BurgerMenu" onClick={this.sideDrawerHandler}>
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+        </div>
+        <BackDrop
+          show={this.state.showSideDrawer}
+          closeSideDrawer={this.closeSideDrawer}
+        />
 
-            </Route>
-            {/* <Route
-              path="/Demo4"
-              render={() => (
-                <Demo4
-                  showItemsHandler={this.showItemsHandler}
-                  showMenuItems={this.state.showMenuItems}
-                  color="#78a021"
-                />
-              )}
-            ></Route>
-            <Route path="/Demo5" render={() => <Demo5 />}></Route> */}
-          </Switch>
+        <SideDrawer
+          showSideDrawer={this.state.showSideDrawer}
+          closeSideDrawer={this.closeSideDrawer}
+        />
+        <div className="Contents">
+          <div className="Header">
+            <h1>Responsive Multi-Level Menu</h1>
+            <p>Space-saving drop-down menu with subtle effects</p>
+          </div>
+          <div className="Demos">
+            <div id="Demo1" style={{ paddingTop: 30 }}>
+              <Demo1 color="#9f3147" />
+            </div>{" "}
+            <div id="Demo2" style={{ paddingTop: 30 }}>
+              <Demo2 color="#d35420" />
+            </div>
+            <div id="Demo3" style={{ paddingTop: 30 }}>
+              <Demo3 color="#44b5af" />
+            </div>
+            <div id="Demo4" style={{ paddingTop: 30 }}>
+              <Demo4 color="#77a021" />
+            </div>
+            <div id="Demo5" style={{ paddingTop: 30 }}>
+              <Demo5 color="#744783" />
+            </div>
+          </div>
         </div>
       </div>
     );

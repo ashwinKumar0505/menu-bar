@@ -1,120 +1,93 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdArrowDropleft } from "react-icons/io";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Data from "../../Data/Data";
 import MenuItem from "../MenuItem/MenuItem";
 import classes from "./MenuItems.module.css";
 
-class MenuItems extends React.Component {
-  componentWillMount() {
-    let newItemsToShow = this.state.itemsToShow;
-    newItemsToShow = Object.assign({}, this.state.menuItems);
-    this.setState(prevState => {
-      return {
-        itemsToShow: newItemsToShow,
-        id: this.state.menuItems.id,
-        itemsStack: [...prevState.itemsStack, this.state.menuItems],
-      };
-    });
-  }
+const MenuItems = props => {
+  const [itemsToShow, setItemsToShow] = useState(Data);
+  const [itemsStack, setItemsStack] = useState([Data]);
+  const [id, setId] = useState(Data.id);
+  const [move, changeMove] = useState("next");
 
-  moveToNext = value => {
-    const newItems = this.state.itemsToShow.items.find(
-      item => item.value === value,
-    );
 
-    if ( newItems !== undefined && "items" in newItems) {
-      this.setState(prevState => {
-        return {
-          itemsToShow: newItems,
-          id: newItems.id,
-          itemsStack: [...prevState.itemsStack, prevState.itemsToShow],
-          move: "next",
-        };
-      });
+
+  const moveToNext = value => {
+    const newItems = itemsToShow.items.find(item => item.value === value);
+
+    if (newItems !== undefined && "items" in newItems) {
+      setItemsToShow(newItems);
+      setId(newItems.id);
+      setItemsStack([...itemsStack, itemsToShow]);
+      changeMove("next");
     } else {
       return;
     }
   };
 
-  moveToPrevious = () => {
-    const newItemsStack = this.state.itemsStack;
+  const moveToPrevious = () => {
+    const newItemsStack = [...itemsStack];
     const newItemsToShow = newItemsStack.pop();
 
-    if(newItemsToShow !== undefined) {
-      this.setState({
-        itemsToShow: newItemsToShow,
-        itemsStack: newItemsStack,
-        id: newItemsToShow.id,
-        move: "prev",
-      });
+    if (newItemsToShow !== undefined) {
+      setItemsToShow(newItemsToShow);
+      setId(newItemsToShow.id);
+      setItemsStack(newItemsStack);
+      changeMove("prev");
     }
   };
 
-  state = {
-    menuItems: Data,
-    itemsToShow: {},
-    itemsStack: [],
-    id: null,
-    move: "next",
-  };
-
-  render() {
-    const childFactoryCreator = classNames => child =>
-      React.cloneElement(child, { classNames });
-    return (
-      <TransitionGroup
-        childFactory={childFactoryCreator(
-          this.state.move === "next" ? this.props.animation[0] : this.props.animation[1],
-        )}
+  const childFactoryCreator = classNames => child =>
+    React.cloneElement(child, { classNames });
+  return (
+    <TransitionGroup
+      childFactory={childFactoryCreator(
+        move === "next" ? props.animation[0] : props.animation[1],
+      )}
+    >
+      <CSSTransition
+        timeout={300}
+        in={true}
+        appear={true}
+        classNames="slideOut"
+        key={id}
       >
-        <CSSTransition
-          timeout={300}
-          in={true}
-          appear={true}
-          classNames="slideOut"
-          key={this.state.id}
+        <div
+          className={[
+            classes.MenuItems,
+            props.showMenuItems ? classes.ShowMenuItems : classes.HideMenuItems,
+          ].join(" ")}
+          onClick={event => {
+            event.stopPropagation();
+          }}
+          style={{ backgroundColor: props.color }}
         >
-          <div
-            className={[
-              classes.MenuItems,
-              this.props.showMenuItems
-                ? classes.ShowMenuItems
-                : classes.HideMenuItems,
-            ].join(" ")}
-            onClick={event => {
-              event.stopPropagation();
-            }}
-            style={{backgroundColor:this.props.color}}
-          >
-            {this.state.itemsToShow.items.map(item => {
-              if (item.value === "back") {
-                return (
-                  <div
-                    className={classes.Back}
-                    onClick={() => this.moveToPrevious()}
-                  >
-                    <p className={classes.BackArrow}>
-                      <IoMdArrowDropleft />
-                    </p>
-                    <p className={classes.backButton}>back</p>
-                  </div>
-                );
-              } else {
-                return (
-                  <MenuItem
-                    value={item.value}
-                    moveToNext={this.moveToNext}
-                    next={item.next}
-                  />
-                );
-              }
-            })}
-          </div>
-        </CSSTransition>
-      </TransitionGroup>
-    );
-  }
-}
+          {itemsToShow.items.map(item => {
+            if (item.value === "back") {
+              return (
+                <div className={classes.Back} onClick={() => moveToPrevious()} id={item.id}>
+                  <p className={classes.BackArrow}>
+                    <IoMdArrowDropleft />
+                  </p>
+                  <p className={classes.backButton}>back</p>
+                </div>
+              );
+            } else {
+              return (
+                <MenuItem
+                  id={item.id}
+                  value={item.value}
+                  moveToNext={moveToNext}
+                  nextValue={item.hasOwnProperty("items") && item.items.length>0}
+                />
+              );
+            }
+          })}
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
+  );
+};
 
 export default MenuItems;

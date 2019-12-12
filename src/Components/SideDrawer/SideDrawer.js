@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
-import image from "../../bar2.png"
+import image from "../../logo.png"
 import classes from "./SideDrawer.module.css";
 const SideDrawer = props => {
   return (

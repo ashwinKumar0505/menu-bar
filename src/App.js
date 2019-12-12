@@ -6,7 +6,7 @@ import Demo3 from "./Components/Demo3/Demo3";
 import Demo4 from "./Components/Demo4/Demo4";
 import Demo5 from "./Components/Demo5/Demo5";
 import { Link, animateScroll as scroll } from "react-scroll";
-import image from "./bar2.png";
+import image from "./logo.png";
 import SideDrawer from "./Components/SideDrawer/SideDrawer";
 import BackDrop from "./Components/BackDrop/BackDrop";
 
@@ -47,7 +47,7 @@ class App extends React.Component {
               offset={-70}
               duration={500}
             >
-              FADE IN-OUT
+              Fade In-Out
             </Link>
             <Link
               activeClass="active"
@@ -57,7 +57,7 @@ class App extends React.Component {
               offset={-70}
               duration={500}
             >
-              SLIDE IN-OUT
+              Slide In-Out
             </Link>
             <Link
               activeClass="active"
@@ -67,7 +67,7 @@ class App extends React.Component {
               offset={-70}
               duration={500}
             >
-              MOVE UP-DOWN
+              Move Up-Down
             </Link>
             <Link
               activeClass="active"
@@ -77,7 +77,7 @@ class App extends React.Component {
               offset={-70}
               duration={500}
             >
-              SCALE UP-DOWN
+              Scale Up-Down
             </Link>
             <Link
               activeClass="active"
@@ -87,16 +87,16 @@ class App extends React.Component {
               offset={-70}
               duration={500}
             >
-              SCALE DOWN-UP
+              Scale Down-Up
             </Link>
           </div>
         </div>
         <div className="TopNav">
           <img src={image} alt="bar" onClick={this.scrollToTop}/>
-          <div className="BurgerMenu" onClick={this.sideDrawerHandler}>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
+          <div className="BurgerMenu1" onClick={this.sideDrawerHandler}>
+            <div className="line1"></div>
+            <div className="line1"></div>
+            <div className="line1"></div>
           </div>
         </div>
         <BackDrop
@@ -110,7 +110,7 @@ class App extends React.Component {
         />
         <div className="Contents">
           <div className="Header">
-            <h1>Responsive Multi-Level Menu</h1>
+            <h1>Responsive React Multi-Level Menu</h1>
             <p>Space-saving drop-down menu with subtle effects</p>
           </div>
           <div className="Demos">

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { IoMdArrowDropleft } from "react-icons/io";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import Data from "../../Data/Data";
 import MenuItem from "../MenuItem/MenuItem";
 import classes from "./MenuItems.module.css";
 
 const MenuItems = props => {
-  const [itemsToShow, setItemsToShow] = useState(Data);
-  const [itemsStack, setItemsStack] = useState([Data]);
-  const [id, setId] = useState(Data.id);
+  const [itemsToShow, setItemsToShow] = useState(props.Data);
+  const [itemsStack, setItemsStack] = useState([props.Data]);
+  const [id, setId] = useState(props.Data.id);
   const [move, changeMove] = useState("next");
 
 
 
   const moveToNext = value => {
-    const newItems = itemsToShow.items.find(item => item.value === value);
 
-    if (newItems !== undefined && "items" in newItems) {
+    const newItems = itemsToShow.items.find(item => item.value === value);
+    
+    if (newItems !== undefined && "items" in newItems && newItems.items.length>0) {
       setItemsToShow(newItems);
       setId(newItems.id);
       setItemsStack([...itemsStack, itemsToShow]);

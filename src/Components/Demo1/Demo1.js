@@ -1,46 +1,84 @@
-import React, { useState, useEffect } from "react";
-import "../Demo.css";
+import React from "react";
+import MenuBar from "../MenuBar/MenuBar";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import "../Demo.css";
 
-import MenuItems from "../MenuItems/MenuItems";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
+const code = `class Menu extends React.Component {
+  render() {
+    const menuItems = {
+      value: "menu-items",
+      items: [
+        {
+          value: "Fashion",
+          items: [
+            {
+              value: "back"
+            },
+            {
+              value: "Men",
+              items: [
+                {
+                  value: "back"
+                },
+                {
+                  value: "Shirts"
+                },
+                {
+                  value: "Jackets"
+                }
+              ]
+            },
+            {
+              value: "Women",
+              items: [
+                {
+                  value: "back"
+                },
+                {
+                  value: "Jackets"
+                },
+                {
+                  value: "T-Shirts"
+                },
+                {
+                  value: "Underwear"
+                }
+              ]
+            },
+            {
+              value: "Children"
+            }
+          ]
+        },
+        {
+          value: "Electronics",
+          items: []
+        },
+        {
+          value: "Furnitures",
+          items: []
+        },
+        {
+          value: "Jewelery&watches",
+          items: []
+        }
+      ]
+    };
+    const color = "#c62860";
+    const animation = ["fadeIn", "fadeOut"];
 
-const code = `
-Demo1=()=>{
-const color="#c62860";
-return <MenuBar1 color={color}/>
+    return <MenuBar color={color} Data={menuItems} animation={animation} />;
+  }
 }
 `;
 
-const MenuBar1 = props => {
-  const [showMenuItems, changeShowMenuItems] = useState(false);
-  const showItemsHandler = event => {
-    event.stopPropagation();
-    changeShowMenuItems(!showMenuItems);
-  };
-  const closeItemsHandler = () => {
-    changeShowMenuItems(false);
-  };
-  return (
-    <div className="menu" onClick={closeItemsHandler}>
-      <BurgerMenu showItemsHandler={showItemsHandler} color={props.color} />
-
-      <MenuItems
-        showMenuItems={showMenuItems}
-        animation={["fadeIn", "fadeOut"]}
-        color={props.color}
-      />
-    </div>
-  );
-};
-
 const AppLive = () => {
   const scope = {
-    MenuBar1,
+    MenuBar,
   };
   return (
     <div className="AllDemo">
-      <h2 className="Heading">FADE IN-OUT</h2>
+      <h2 className="Heading" style={{color:"#c62860"}}>FADE IN-OUT</h2>
       <div className="Description">
         <p>
           Here the submenu will fade in and scale up from the back and the

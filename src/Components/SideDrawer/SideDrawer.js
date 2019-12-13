@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
-import image from "../../logo.png"
+import image from "../../logo1.png";
 import classes from "./SideDrawer.module.css";
 const SideDrawer = props => {
   return (
@@ -13,7 +13,9 @@ const SideDrawer = props => {
         event.stopPropagation();
       }}
     >
-       <img src={image} alt="bar"/>
+      <div className={classes.Logo}>
+        <img src={image} alt="bar" /> <p>Codebrahma</p>
+      </div>
       <div className={classes.DemoButtons}>
         <Link
           activeClass="active"

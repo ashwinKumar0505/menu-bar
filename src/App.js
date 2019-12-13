@@ -6,7 +6,7 @@ import Demo3 from "./Components/Demo3/Demo3";
 import Demo4 from "./Components/Demo4/Demo4";
 import Demo5 from "./Components/Demo5/Demo5";
 import { Link, animateScroll as scroll } from "react-scroll";
-import image from "./logo.png";
+import image from "./logo1.png";
 import SideDrawer from "./Components/SideDrawer/SideDrawer";
 import BackDrop from "./Components/BackDrop/BackDrop";
 
@@ -36,8 +36,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="NavBar">
-          <img src={image} alt="bar" onClick={this.scrollToTop} />
+        <div className="SideNavBar">
+          <div className="Logo" onClick={this.scrollToTop}>
+            <img src={image} alt="bar" /> <p>Codebrahma</p>
+          </div>
           <div className="DemoButtons">
             <Link
               activeClass="active"
@@ -92,7 +94,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="TopNav">
-          <img src={image} alt="bar" onClick={this.scrollToTop}/>
+          <img src={image} alt="bar" onClick={this.scrollToTop} />
           <div className="BurgerMenu1" onClick={this.sideDrawerHandler}>
             <div className="line1"></div>
             <div className="line1"></div>
@@ -114,19 +116,19 @@ class App extends React.Component {
             <p>Space-saving drop-down menu with subtle effects</p>
           </div>
           <div className="Demos">
-            <div id="Demo1" style={{ paddingTop: 30 }}>
+            <div id="Demo1" >
               <Demo1 color="#9f3147" />
             </div>{" "}
-            <div id="Demo2" style={{ paddingTop: 30 }}>
+            <div id="Demo2" >
               <Demo2 color="#d35420" />
             </div>
-            <div id="Demo3" style={{ paddingTop: 30 }}>
+            <div id="Demo3" >
               <Demo3 color="#44b5af" />
             </div>
-            <div id="Demo4" style={{ paddingTop: 30 }}>
+            <div id="Demo4" >
               <Demo4 color="#77a021" />
             </div>
-            <div id="Demo5" style={{ paddingTop: 30 }}>
+            <div id="Demo5" >
               <Demo5 color="#744783" />
             </div>
           </div>

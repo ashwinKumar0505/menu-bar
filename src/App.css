@@ -1,0 +1,501 @@
+.App {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.Header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 200px;
+  margin: 10px 0;
+}
+
+
+.Header h1,
+.Header p {
+  font-weight: 300;
+  margin: 10px;
+  text-align: center;
+}
+
+.Header p {
+  font-size: 18px;
+  color: #888785;
+
+}
+
+.Header h1 {
+  font-size: 45px;
+  color: black;
+}
+
+.SideNavBar {
+  height: 100%;
+  width: 250px;
+  position: fixed !important;
+  padding: 10px;
+  z-index: 1;
+  left: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.Logo {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+
+}
+
+.Logo p {
+  font-size: 22px;
+  font-weight: 700;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: #65509c;
+}
+
+.SideNavBar img {
+  width: 80px;
+  height: 70px;
+  padding-bottom: 10px;
+}
+
+.TopNav {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  position: fixed;
+  display: none;
+  top: 0;
+  height: 60px;
+  z-index: 100;
+}
+
+.TopNav img {
+  width: 53px;
+  height: 47px;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+}
+
+.BurgerMenu1 {
+  padding: 10px;
+  width: 25px;
+  cursor: pointer;
+  max-height: 24px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.line1 {
+  width: 25px;
+  height: 5px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.DemoButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 30%;
+}
+
+
+.DemoButtons a {
+  display: inline-block;
+  margin: 0.5em;
+  color: #a39a9a;
+  font-weight: 500;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.Demos {
+  margin: 50px;
+  padding-left: 250px;
+}
+
+
+.DemoButtons a:active,
+.DemoButtons a:hover,
+.DemoButtons a.active {
+  font-weight: 600;
+  color: black;
+  border-right: 4px solid #65509c;
+}
+
+.fadeIn-enter {
+  animation-name: fadeIn;
+  animation-duration: 400ms;
+  z-index: 100;
+}
+
+.fadeIn-exit {
+  animation-name: showOut;
+  animation-duration: 400ms;
+  z-index: 50;
+}
+
+
+.fadeOut-enter {
+  animation-name: showIn;
+  animation-duration: 400ms;
+}
+
+.fadeOut-exit {
+  animation-name: fadeOut;
+  animation-duration: 500ms;
+}
+
+.slideIn-enter {
+  animation-name: fadeInRight;
+  animation-duration: 400ms;
+}
+
+.slideIn-exit {
+  animation-name: fadeOutLeft;
+  animation-duration: 500ms;
+}
+
+.slideOut-enter {
+  animation-name: fadeInLeft;
+  animation-duration: 400ms;
+}
+
+.slideOut-exit {
+  animation-name: fadeOutRight;
+  animation-duration: 500ms;
+}
+
+.moveUp-enter {
+  animation-name: showFromBack;
+  animation-duration: 400ms;
+}
+
+.moveUp-exit {
+  animation-name: hideToFront;
+  animation-duration: 500ms;
+}
+
+.moveDown-enter {
+  animation-name: showFromFront;
+  animation-duration: 400ms;
+  z-index: 100;
+}
+
+.moveDown-exit {
+  animation-name: hideToBack;
+  animation-duration: 500ms;
+}
+
+.scaleUp-enter {
+  animation-name: smallToNormal;
+  animation-duration: 400ms;
+}
+
+.scaleUp-exit {
+  animation-name: normalToLarge;
+  animation-duration: 400ms;
+}
+
+.scaleDown-enter {
+  animation-name: largeToNormal;
+  animation-duration: 300ms;
+}
+
+.scaleDown-exit {
+  animation-name: normalToSmall;
+  animation-duration: 400ms;
+}
+
+@keyframes smallToNormal {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes normalToLarge {
+  0% {}
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes largeToNormal {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes normalToSmall {
+  0% {}
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes showFromBack {
+  0% {
+    -webkit-transform: perspective(200px) translateZ(-200px);
+    transform: perspective(200px) translateZ(-200px);
+    opacity: 0;
+  }
+
+  100% {
+
+    -webkit-transform: perspective(200px) translateZ(0);
+    transform: perspective(200px) translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hideToFront {
+  0% {}
+
+  100% {
+
+    -webkit-transform: translateY(40%);
+    transform: translateY(40%);
+    opacity: 0;
+  }
+}
+
+@keyframes hideToBack {
+  0% {
+    -webkit-transform: perspective(200px) translateZ(0);
+    transform: perspective(200px) translateZ(0);
+    opacity: 1;
+
+  }
+
+  50% {
+    -webkit-transform: perspective(200px) translateZ(-100px);
+    transform: perspective(200px) translateZ(-100px);
+    opacity: 0.5;
+
+  }
+
+  100% {
+
+    -webkit-transform: perspective(200px) translateZ(-200px);
+    transform: perspective(200px) translateZ(-200px);
+    opacity: 0;
+  }
+
+}
+
+@keyframes showFromFront {
+  0% {
+    -webkit-transform: translateY(40%);
+    transform: translateY(40%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeInRight {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes showOut {
+  0% {}
+
+  50% {
+    -webkit-transform: translateZ(-250px) rotateY(30deg);
+    transform: translateZ(-250px) rotateY(30deg);
+  }
+
+  75% {
+    -webkit-transform: translateZ(-372.5px) rotateY(15deg);
+    transform: translateZ(-372.5px) rotateY(15deg);
+    opacity: .5;
+  }
+
+  100% {
+    -webkit-transform: translateZ(-500px) rotateY(0deg);
+    transform: translateZ(-500px) rotateY(0deg);
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeOutRight {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity: 0;
+
+  }
+}
+
+@keyframes showIn {
+  0% {
+    -webkit-transform: translateZ(-500px) rotateY(0deg);
+    transform: translateZ(-500px) rotateY(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    -webkit-transform: translateZ(-250px) rotateY(30deg);
+    transform: translateZ(-250px) rotateY(30deg);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0px) rotateY(0deg);
+    transform: translateZ(0px) rotateY(0deg);
+    opacity: 1;
+  }
+
+}
+
+@media(max-width:900px) {
+  .App {
+    display: block;
+  }
+
+  .Header {
+    padding: 0;
+    margin: 100px 0;
+  }
+
+  .Header h1 {
+    font-size: 30px;
+    letter-spacing: 4px;
+    line-height: 51px;
+
+  }
+
+  .menu {
+    margin-left: 50px;
+  }
+
+  .DemoButtons {
+    width: 100%;
+  }
+
+  .Demos {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .SideNavBar {
+    display: none;
+  }
+
+  .TopNav {
+    display: flex;
+    justify-content: space-between;
+  }
+}

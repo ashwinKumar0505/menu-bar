@@ -1,8 +1,6 @@
-.AllDemo {
-  height: 85vh;
-}
-.AllDemo:last-child{
-  height: 90vh;
+.AllDemo{
+  padding-top: 65px;
+  padding-bottom: 70px;
 }
 
 .Demo {
@@ -162,6 +160,7 @@
 @media(max-height:700px) {
   .AllDemo {
     height: 100%;
+    padding: 0;
   }
 }
 
@@ -173,6 +172,7 @@
 
   .AllDemo {
     height: 100%;
+    padding: 0;
   }
   .AllDemo:last-child{
     height: 100%;

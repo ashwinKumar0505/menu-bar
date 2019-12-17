@@ -1,8 +1,10 @@
 .AllDemo{
-  padding-top: 65px;
-  padding-bottom: 70px;
+  padding-bottom: 132px;
 }
 
+.AllDemo1{
+  height: 88vh;
+}
 .Demo {
   display: flex;
   width: 100%;
@@ -174,7 +176,7 @@
     height: 100%;
     padding: 0;
   }
-  .AllDemo:last-child{
+  .AllDemo1{
     height: 100%;
   }
 

@@ -13,8 +13,9 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding-left: 200px;
-  margin: 10px 0;
+  padding-left: 135px;
+  margin-top:10px;
+  margin-bottom: 60px;
 }
 
 
@@ -61,7 +62,7 @@
   font-weight: 700;
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 32px;
   color: #65509c;
 }
 

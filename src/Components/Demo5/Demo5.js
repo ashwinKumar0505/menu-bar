@@ -78,7 +78,7 @@ const AppLive = () => {
     MenuBar,
   };
   return (
-    <div className="AllDemo">
+    <div className="AllDemo1">
       <h2 className="Heading" style={{color:"#744783"}}>SCALE DOWN-UP</h2>
       <div className="Description">
         <p>

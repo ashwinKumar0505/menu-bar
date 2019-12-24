@@ -67,7 +67,7 @@ const code = `class Menu extends React.Component {
     const color = "#08cbc4";
     const animation = ["moveUp", "moveDown"];
 
-    return <MenuBar color={color} Data={menuItems} animation={animation} />;
+    return <MenuBar backgroundColor={color} data={menuItems} animation={animation} />;
   }
 }
 

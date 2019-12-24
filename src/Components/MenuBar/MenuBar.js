@@ -16,9 +16,8 @@ const MenuBar = props => {
       generateId(data.items[i]);
     }
   };
-  generateId(props.Data);
+  generateId(props.data);
 
-  console.log(props.Data);
   const [showMenuItems, changeShowMenuItems] = useState(false);
 
   const showItemsHandler = event => {
@@ -31,13 +30,13 @@ const MenuBar = props => {
   };
   return (
     <div className="menu" onClick={closeItemsHandler}>
-      <BurgerMenu showItemsHandler={showItemsHandler} color={props.color} />
+      <BurgerMenu showItemsHandler={showItemsHandler} color={props.backgroundColor} />
 
       <MenuItems
         showMenuItems={showMenuItems}
         animation={props.animation}
-        color={props.color}
-        Data={props.Data}
+        color={props.backgroundColor}
+        Data={props.data}
       />
     </div>
   );

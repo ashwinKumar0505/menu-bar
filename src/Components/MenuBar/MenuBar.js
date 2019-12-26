@@ -6,6 +6,46 @@ import "../Demo.css";
 const MenuBar = props => {
   //props.Data.id='_' + Math.random().toString(36).substr(2, 9);
 
+
+  const menuItems = {
+    value: 'menuItems',
+    items: [
+      {
+        value: 'Send',
+        items: [
+          {
+            value: 'Back'
+          },
+          {
+            value: 'Data Props',
+            items: [
+              {
+                value: 'Back'
+              },
+              {
+                value: 'To Edit this'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        value: 'The',
+        items: []
+      },
+      { value: 'Data' },
+      { value: 'Props' }
+    ]
+  }
+
+  let Data = {}
+  if (props.data) {
+    Data = props.data
+  } else {
+    Data = menuItems
+  }
+
+
   const generateId = data => {
     data.id =
       "_" +
@@ -16,7 +56,7 @@ const MenuBar = props => {
       generateId(data.items[i]);
     }
   };
-  generateId(props.data);
+  generateId(Data);
 
   const [showMenuItems, changeShowMenuItems] = useState(false);
 
@@ -36,7 +76,7 @@ const MenuBar = props => {
         showMenuItems={showMenuItems}
         animation={props.animation}
         color={props.backgroundColor}
-        Data={props.data}
+        Data={Data}
       />
     </div>
   );

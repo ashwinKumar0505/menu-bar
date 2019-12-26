@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { IoMdArrowDropleft } from "react-icons/io";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MenuItem from "../MenuItem/MenuItem";
-import classes from "./MenuItems.module.css";
 
 const MenuItems = props => {
   const [itemsToShow, setItemsToShow] = useState(props.Data);
@@ -10,19 +9,21 @@ const MenuItems = props => {
   const [id, setId] = useState(props.Data.id);
   const [move, changeMove] = useState("next");
 
-
+  const notificationRef = useRef(null);
 
   const moveToNext = value => {
-
     const newItems = itemsToShow.items.find(item => item.value === value);
-    
-    if (newItems !== undefined && "items" in newItems && newItems.items.length>0) {
+
+    if (
+      newItems !== undefined &&
+      "items" in newItems &&
+      newItems.items.length > 0
+    ) {
       setItemsToShow(newItems);
       setId(newItems.id);
       setItemsStack([...itemsStack, itemsToShow]);
       changeMove("next");
     } else {
-      return;
     }
   };
 
@@ -40,10 +41,20 @@ const MenuItems = props => {
 
   const childFactoryCreator = classNames => child =>
     React.cloneElement(child, { classNames });
+
+  const animation = [];
+
+  if (props.animation) {
+    animation[0] = props.animation[0] ? props.animation[0] : "slideIn";
+    animation[1] = props.animation[0] ? props.animation[1] : "slideOut";
+  } else {
+    animation[0] = "slideIn";
+    animation[1] = "slideOut";
+  }
   return (
     <TransitionGroup
       childFactory={childFactoryCreator(
-        move === "next" ? props.animation[0] : props.animation[1],
+        move === "next" ? animation[0] : animation[1],
       )}
     >
       <CSSTransition
@@ -55,31 +66,51 @@ const MenuItems = props => {
       >
         <div
           className={[
-            classes.MenuItems,
-            props.showMenuItems ? classes.ShowMenuItems : classes.HideMenuItems,
+            "MenuItems",
+            props.showMenuItems ? "ShowMenuItems" : "HideMenuItems",
           ].join(" ")}
+          ref={notificationRef}
           onClick={event => {
             event.stopPropagation();
           }}
-          style={{ backgroundColor: props.color }}
+          style={{
+            backgroundColor: props.color ? props.color : "#08cbc4",
+            width: props.width ? props.width : 300,
+            maxHeight: props.height ? props.height : 300,
+          }}
         >
           {itemsToShow.items.map(item => {
-            if (item.value === "back") {
+            let checkItem = item.value.toUpperCase();
+            if (checkItem === "BACK") {
               return (
-                <div className={classes.Back} onClick={() => moveToPrevious()} id={item.id}>
-                  <p className={classes.BackArrow}>
+                <div
+                  className="Back"
+                  onClick={() => moveToPrevious()}
+                  id={item.id}
+                >
+                  <p className="BackArrow">
                     <IoMdArrowDropleft />
                   </p>
-                  <p className={classes.backButton}>back</p>
+                  <p
+                    className="backButton"
+                    style={{
+                      color: props.textColor ? props.textColor : "white",
+                    }}
+                  >
+                    {item.value}
+                  </p>
                 </div>
               );
             } else {
               return (
                 <MenuItem
                   id={item.id}
+                  textColor={props.textColor}
                   value={item.value}
                   moveToNext={moveToNext}
-                  nextValue={item.hasOwnProperty("items") && item.items.length>0}
+                  nextValue={
+                    item.hasOwnProperty("items") && item.items.length > 0
+                  }
                 />
               );
             }

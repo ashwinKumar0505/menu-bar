@@ -1,80 +1,67 @@
 import React from "react";
-import MenuBar from "../MenuBar/MenuBar";
+import Menubar from "cb-react-menubar";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import "../Demo.css";
 
 const code = `class Menu extends React.Component {
   render() {
-    const menuItems = {
-      value: "menu-items",
-      items: [
-        {
-          value: "Fashion",
-          items: [
-            {
-              value: "back"
-            },
-            {
-              value: "Men",
-              items: [
-                {
-                  value: "back"
-                },
-                {
-                  value: "Shirts"
-                },
-                {
-                  value: "Jackets"
-                }
-              ]
-            },
-            {
-              value: "Women",
-              items: [
-                {
-                  value: "back"
-                },
-                {
-                  value: "Jackets"
-                },
-                {
-                  value: "T-Shirts"
-                },
-                {
-                  value: "Underwear"
-                }
-              ]
-            },
-            {
-              value: "Children"
-            }
-          ]
-        },
-        {
-          value: "Electronics",
-          items: []
-        },
-        {
-          value: "Furnitures",
-          items: []
-        },
-        {
-          value: "Jewelery&watches",
-          items: []
-        }
-      ]
-    };
+    const menuItems = [
+      {
+        value: "Fashion",
+        items: [
+          {
+            value: "Men",
+            items: [
+              {
+                value: "Shirts"
+              }
+            ]
+          },
+          {
+            value: "Women",
+            items: [
+              {
+                value: "Jackets"
+              },
+              {
+                value: "T-Shirts"
+              },
+              {
+                value: "Underwear"
+              }
+            ]
+          },
+          {
+            value: "Children"
+          }
+        ]
+      },
+      {
+        value: "Electronics"
+      },
+      {
+        value: "Furnitures",
+        items: []
+      },
+      {
+        value: "Jewelery&watches",
+        items: []
+      }
+    ];
     const color = "#c62860";
     const animation = ["fadeIn", "fadeOut"];
 
-    return <MenuBar backgroundColor={color} data={menuItems} animation={animation} />;
+    return (
+      <Menubar backgroundColor={color} data={menuItems} animation={animation} />
+    );
   }
 }
+
 `;
 
 const AppLive = () => {
   const scope = {
-    MenuBar,
+    Menubar,
   };
   return (
     <div className="AllDemo">
@@ -88,9 +75,6 @@ const AppLive = () => {
       <div className="Demo">
         <LiveProvider code={code} scope={scope}>
           <div className="LiveEditor">
-            {/* <div className="UpArrow">
-              <IoIosArrowDown />
-            </div> */}
 
             <LiveEditor />
           </div>
